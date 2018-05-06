@@ -19,4 +19,10 @@ router.get('/greet/:name', function(req, res, next) {
   res.send(param);
 });
 
+router.post('/', function(req, res, next) {
+  var param = { "result": "success", "message": req.body.message };
+  res.header('Content-Type', 'application/json; charset=utf-8');
+  res.send(param);
+})
+
 module.exports = router;
