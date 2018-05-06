@@ -7,4 +7,10 @@ router.get('/', function(req, res, next) {
   res.send(param);
 });
 
+router.get('/hello/:name', function(req, res, next) {
+  var param = { "result": "hello " + req.params.name }
+  res.header('Content-Type', 'application/json; charset=utf-8');
+  res.send(param);
+});
+
 module.exports = router;
