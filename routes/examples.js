@@ -13,4 +13,10 @@ router.get('/hello/:name', function(req, res, next) {
   res.send(param);
 });
 
+router.get('/greet/:name', function(req, res, next) {
+  var param = { "result": req.query.greet + " " + req.params.name }
+  res.header('Content-Type', 'application/json; charset=utf-8');
+  res.send(param);
+});
+
 module.exports = router;
