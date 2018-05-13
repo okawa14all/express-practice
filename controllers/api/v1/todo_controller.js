@@ -20,3 +20,11 @@ exports.create = function(req, res, next) {
     res.status(201).json({ todo: newTodo })
   });
 };
+
+exports.destroy = function(req, res, next) {
+  models.Todo.destroy({
+    where: { id: req.params.id }
+  }).then(todo => {
+    res.status(204).json({})
+  });
+};
