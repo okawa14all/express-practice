@@ -35,6 +35,6 @@ exports.destroy = function(req, res, next) {
   models.Todo.destroy({
     where: { id: req.params.id }
   }).then(todo => {
-    res.status(204).json({})
+    res.status(204).send();
   });
 };
