@@ -11,3 +11,12 @@ exports.show = function(req, res, next) {
     res.json({ todo: todo })
   });
 }
+
+exports.create = function(req, res, next) {
+  models.Todo.create({
+    title: req.body.title,
+    description: req.body.description
+  }).then(newTodo => {
+    res.status(201).json({ todo: newTodo })
+  });
+};
