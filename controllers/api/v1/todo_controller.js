@@ -21,6 +21,16 @@ exports.create = function(req, res, next) {
   });
 };
 
+exports.update = function(req, res, next) {
+  models.Todo.findById(req.params.id).then(todo => {
+    todo.update({
+      title: req.body.title,
+      description: req.body.description
+    });
+    res.status(204).send();
+  });
+}
+
 exports.destroy = function(req, res, next) {
   models.Todo.destroy({
     where: { id: req.params.id }
