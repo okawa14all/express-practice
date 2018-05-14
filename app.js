@@ -26,6 +26,9 @@ app.use('/users', usersRouter);
 app.use('/examples', examplesRouter);
 app.use('/api', apiRouter);
 
+// react app
+app.use('/front',express.static(path.join(__dirname, 'client/build')));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
