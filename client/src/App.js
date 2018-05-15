@@ -3,7 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { todos: null }
+  }
+
+  componentDidMount() {
+    this.getTodos()
+      .then(res => this.setState({ todos: res.todos }))
+      .catch(err => console.log(err));
+  }
+
+  getTodos = async () => {
+    const response = await fetch('/api/v1/todos');
+    const body = await response.json();
+    return body;
+  }
+
   render() {
+    console.log(this.state.todos);
+
     return (
       <div className="App">
         <header className="App-header">
